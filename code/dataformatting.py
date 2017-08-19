@@ -8,10 +8,10 @@ Created on Thu Aug 17 10:56:28 2017
 # This programm reformats the data from date-time-start-lowest-highest-end
 # to tuples like (date, time, start, end, lowest, highest)
 
-data = []
-
-sourcefile = open("comex.GC_160101_170101.csv")
+sourcefile = open("comex.GC_110101_120101.csv")
 destinfile = open("goldprize 2007-2017.txt", "a")
+
+data = []
 
 for line in sourcefile:
     tmp = line.split(",")
