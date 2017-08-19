@@ -33,7 +33,7 @@
 			\end{center}
 			Sei also im Folgendem
 			\begin{center}
-				\[ \Xi(i) :=
+				\[ \xi(i) :=
 					\begin{cases}
 						-1, & \psi(p_{i})=-x_{i} \\
 						\gamma, & \psi(p_{i})=\gamma x_{i}
@@ -42,6 +42,16 @@
 			\end{center}
 			mit dem Gradienten des Erwartungswerts
 			\begin{center}
-				\[(\nabla E)_{i}=\Xi(i)p_{i}\]
+				\[(\nabla E)_{i}=\xi(i)p_{i}\]
 			\end{center}
+			Setze nun \[g(X):=\sum_{i=1}^{n}x_{i}-{omega}\]
+			Dann gilt fuer \[(\nabla \lambda g)_{i} = \lambda\]\\
+			Es lässt sich also mit der Methode der Lagrange-Multiplikatoren die folgende Funktion aufstellen \[\Lambda(X,\lambda) := E(X)+\lambda g(X)\]
+			\[\nabla \Lambda(X,\lambda) = \nabla E(X) + \nabla \lambda g(X)\]
+			Durch die bereits berechneten Gradienten folgt
+			\[(\nabla \Lambda (X,\lambda))_{k}=
+				\begin{cases}
+					\xi (k)p_{k}+\lambda, & 1\leq k\leq n\\
+					\sum_{i=1}^{n}x_{i}-\omega, & k = n+1
+				\end{cases}\]
 \end{document}
