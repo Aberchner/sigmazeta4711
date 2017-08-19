@@ -1,4 +1,5 @@
 \documentclass[11pt]{scrartcl}
+\usepackage{german}
 \begin{document}
 	\section{Sprachkonventionen:}
 		Sprachkonventionen:
@@ -16,22 +17,27 @@
 			\item Textdokumente auf Deutsch benennen
 		\end{itemize}
 	\section{Datenkonventionen}
+		Damit die Programme trotz unterschiedlicher Datenquellen universal geschrieben werden können, legen wir folgendes Datenformat f\"ur jeden einzelnen Trade fest:
+		\begin{itemize}
+			\item[] (JJJJMMTT, HHMMSS, Startwert, Endwert, Höchstwert, Tiefstwert)
+		\end{itemize}
+		Dabei ist das erste Feld das Datum und das zweite Feld die Uhrzeit.
 	\section{Coding Konventionen}
 		\subsection{Maximale Zeilenlänge}
-			Maximal 79 Zeichen pro Zeile ("Linie" von Spyder)!
+			Maximal 79 Zeichen pro Zeile (''Linie'' von Spyder)!
 		\subsection{Leerzeilen}
 			\begin{itemize}
 				\item[] 2 Leerzeilen vor und nach Klassen und wichtigen Funktionen.
 				\item[] 1 Leerzeile vor und nach sonstigen Funktionen.
-				\item[] Extra Leerzeilen zum Gruppieren von zusammengehörigen Funktionen.
-				\item[] Bei Bedarf: Leerzeilen in Funktionen zur besseren Verständlichkeit.
+				\item[] Extra Leerzeilen zum Gruppieren von zusammengeh\"origen Funktionen.
+				\item[] Bei Bedarf: Leerzeilen in Funktionen zur besseren Verst\"andlichkeit.
 			\end{itemize}
 		\subsection{Kommentare}
-			\textbf{Aussagekraeftige Kommentare!!!}
+			\textbf{Aussagekr\"aftige Kommentare!!!}
 			\begin{itemize}
 				\item[] Vor jeder Funktion und Klasse kurze Beschreibung was passiert in einem Blockkommentar.
-				\item[] Bei längeren Blockkommentaren Absätze durch Zeilen mit einem "\#" bilden.
-				\item[] Kommentare in der selben Zeile, wie der Quelltext (Inline Kommentare) in Ausnahmefällen benutzen, wenn die Aufgabe der Codezeile nicht offensichtlich ist.
+				\item[] Bei l\"angeren Blockkommentaren Abs\"atze durch Zeilen mit einem ''\#'' bilden.
+				\item[] Kommentare in der selben Zeile, wie der Quelltext (Inline Kommentare) in Ausnahmef\"allen benutzen, wenn die Aufgabe der Codezeile nicht offensichtlich ist.
 			\end{itemize}
 		\subsection{Namensgebung}
 			\begin{itemize}
@@ -42,9 +48,8 @@
 				\item Klassen:
 				\item[] CamelCases
 				\item Funktionen:
-				\item[] kleingeschriebene Namen, Woerter durch Unterstriche getrennt
+				\item[] kleingeschriebene Namen, W\"orter durch Unterstriche getrennt
 				\item Konstanten:
-				\item[] großgeschriebene Namen
+				\item[] grossgeschriebene Namen
 			\end{itemize}
-			
 \end{document}
