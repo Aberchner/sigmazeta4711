@@ -21,7 +21,7 @@
 			Das Ziel ist jetzt also den Erwartungswert nach den Einsaetzen zu optimieren und nach Strategien in Abhaengigkeit von den Gewinnwahrscheinlichkeiten zu finden.\\
 			Berechne zunaechst also den Gradienten von E
 			\begin{center}
-				\[(\nabla E)_{i}=\frac{d\psi(p_{i})p_{i}}{dx_{i}}\]
+				\[(\nabla E)_{i}=\sum_{k=1}^{n}\frac{d\psi(p_{k})p_{k}}{dx_{i}}=\frac{d\psi(p_{i})p_{i}}{dx_{i}}\]
 			\end{center}
 			Falls \(\psi(p_{i})=-x_{i}\) gilt
 			\begin{center}
@@ -33,11 +33,15 @@
 			\end{center}
 			Sei also im Folgendem
 			\begin{center}
-				\[ \Xi(i) =
+				\[ \Xi(i) :=
 					\begin{cases}
-						-1 & \psi(p_{i})=-x_{i} \\
-						\gamma & \psi(p_{i})=\gamma x_{i}
+						-1, & \psi(p_{i})=-x_{i} \\
+						\gamma, & \psi(p_{i})=\gamma x_{i}
 					\end{cases}
 				\]
+			\end{center}
+			mit dem Gradienten des Erwartungswerts
+			\begin{center}
+				\[(\nabla E)_{i}=\Xi(i)p_{i}\]
 			\end{center}
 \end{document}
