@@ -68,14 +68,15 @@
 			\[\lambda = \pm\frac{\sqrt{\sum_{i=1}^{n}\xi(i)^2p_{i}^2}}{2\omega}\]
 			Eingesetzt in die anderen n Gleichungen folgt
 			\[x_{i}=\mp\frac{\omega\xi(i)p_{i}}{\sqrt{\sum_{k=1}^{n}\xi(k)^2p_{k}^2}}\]
-			Sei nun o.B.d.A \(p_{i}\geq0,5\), d.h es wird immer auf den besseren Ausgang gesetzt. Dann müssen alle \(x_{i}\) positiv sein. Daher ist
+			Sei nun o.B.d.A \(p_{i}\geq0,5\), d.h es wird immer auf den besseren Ausgang gesetzt. Dann muessen alle \(x_{i}\) positiv sein. Daher ist
 			$$
 			x_{i}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{k}^2}}
 			$$
-			oder
+			mit positivem \(\lambda\) oder
 			$$
 			x_{i}=\frac{\omega p_{i}}{\sqrt{\sum_{k=1}^{n}p_{k}^2}}
 			$$
+			mit negativem \(\lambda\). \\
 			Unter der Annahme das fuer alle i,j gilt, dass \(p_{i}=p_{j}\) gilt sogar
 			$$
 			x_{i}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{k}^2}}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{i}^2}}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}1}\gamma p_{i}}=\frac{\sqrt{2}\omega}{\sqrt{n(n+1)}}
@@ -97,4 +98,20 @@
 			\end{array}
 			\right)
 			$$
+			Um zu zeigen das die berechneten Werte Maxima sind, ist zu zeigen,\\ dass \(det(H_{L}(X,\lambda))<0\).\\
+			Zeige also zunächst mit vollstaendiger Induktion nach n, dass
+			$$
+			det(H_{L}(X,\lambda))=-2^n\lambda^{n-2}\sum_{i=1}^{n}x_{i}^2
+			$$
+			fuer alle \(n\geq2\) gilt.\\
+			\(n=2\):
+			$$
+			|H_{L}(X,\lambda)|=
+			\begin{vmatrix}
+				0 & 2x_{1} \\
+				2x_{1} & 2\lambda\\
+			\end{vmatrix}
+			=-4x_{1}^2=-2^n\lambda^{n-2}x_{1}^2
+			$$
+			Induktionsschritt:
 \end{document}
