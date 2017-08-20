@@ -5,7 +5,7 @@
 		\subsection{Einführung in Martingale}
 			Man betrachte zunächst ein Spiel bei dem auf Sieg und Niederlage gewettet werden kann. Die Wahrscheinlichkeit für einen Sieg sei also \(p_{0}\) und eine Niederlage \(p_{1}\) (Meist gilt hier \(p_{0} = 1-p_{1}\)). Am Anfang des Spiels legt sich der Spieler auf Sieg oder Niederlage fest. Sei dies hier o.B.d.A. Sieg. In der ersten Runde setzt der Spieler also einen Betrag \(x_{1}\)  auf Sieg. Bei einer Niederlage wird wiederholt auf Sieg gesetzt und der Betrag vervielfacht, d.h. \(\alpha x_{i} = x_{i+1}\). In den bekanntesten Varianten wird hier \(\alpha = 2\) gewaehlt. Sobald auf einer Stufe ein Sieg eintritt, wird in der nächsten Runde wieder mit \(x_{0}\) gestartet. \(\alpha\) sollte also so gewählt sein das es möglich ist auf jeder Stufe durch einen Sieg den Verlust der vorherigen Stufen auszugleichen.
 		\subsection{Verallgemeinertes Martingale}
-			In diesem Abschnitt soll Martingale auf (Aktien-)Kurse angewendet und verallgemeinert werden. Dafuer seien im Folgendem \(p_{1}, p_{2}, ...,p_{n}\) die Wahrscheinlichkeiten fuer das steigen eines Kurses. Des weiteren seien \(x_{1}, x_{2}, ...,x_{n}\) die jeweiligen Einsaetze, \(\gamma\) der Gewinnfaktor (d.h. der Gewinn bei einem Sieg auf der i-ten Stufen beträgt \(\gamma x_{i}\)) und \(\alpha_{1}, \alpha_{2}, ...,\alpha_{n}\) die Steigerungsfaktoren (d.h. \(\alpha_{i}x_{i}=x_{i+1}\)).\\\\
+			In diesem Abschnitt soll Martingale auf (Aktien-)Kurse angewendet und verallgemeinert werden. Dafuer seien im Folgendem \(p_{1}, p_{2}, ...,p_{n}\) die Wahrscheinlichkeiten fuer das steigen eines Kurses. Des weiteren seien \(x_{1}, x_{2}, ...,x_{n}\) die jeweiligen Einsaetze und X der zugehoerige Vektor, \(\gamma\) der Gewinnfaktor (d.h. der Gewinn bei einem Sieg auf der i-ten Stufen beträgt \(\gamma x_{i}\)) und \(\alpha_{1}, \alpha_{2}, ...,\alpha_{n}\) die Steigerungsfaktoren (d.h. \(\alpha_{i}x_{i}=x_{i+1}\)).\\\\
 			D.h. der Gewinn auf der i-ten Stufe entspricht entweder \(-x_{i}\) oder \(\gamma x_{i}\). Sei also \(\psi(p_{i})\) dieser Gewinn. Dann gilt fuer den Erwartungswert
 			\begin{center}
 				\[E(X)=\sum_{i=1}^n \psi(p_{i})p_{i}\]
@@ -44,14 +44,17 @@
 			\begin{center}
 				\[(\nabla E)_{i}=\xi(i)p_{i}\]
 			\end{center}
-			Setze nun \[g(X):=\sum_{i=1}^{n}x_{i}-{omega}\]
-			Dann gilt fuer \[(\nabla \lambda g)_{i} = \lambda\]\\
-			Es lässt sich also mit der Methode der Lagrange-Multiplikatoren die folgende Funktion aufstellen \[\Lambda(X,\lambda) := E(X)+\lambda g(X)\]
+			Setze nun die Nebenbedingung als die Norm von X\[g(X):=\sum_{i=1}^{n}x_{i}^2-{\omega}^2\]
+			Dann gilt fuer \[(\nabla \lambda g)_{i} = 2\lambda x_{i}\]\\
+			Es laesst sich also mit der Methode der Lagrange-Multiplikatoren die folgende Funktion aufstellen \[\Lambda(X,\lambda) := E(X)+\lambda g(X)\]
 			\[\nabla \Lambda(X,\lambda) = \nabla E(X) + \nabla \lambda g(X)\]
 			Durch die bereits berechneten Gradienten folgt
 			\[(\nabla \Lambda (X,\lambda))_{k}=
 				\begin{cases}
-					\xi (k)p_{k}+\lambda, & 1\leq k\leq n\\
-					\sum_{i=1}^{n}x_{i}-\omega, & k = n+1
+					\xi (k)p_{k}+2\lambda x_{i}, & 1\leq k\leq n\\
+					\sum_{i=1}^{n}x_{i}^2-\omega^2, & k = n+1
 				\end{cases}\]
+			und es muss gelten das
+			\[\nabla \Lambda(X,\lambda)=0\]
+			
 \end{document}

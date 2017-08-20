@@ -1,39 +1,39 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.1)  19 AUG 2017 19:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.14)  19 AUG 2017 22:17
 entering extended mode
 **./Konventionen.tex
 (Konventionen.tex
-LaTeX2e <2015/10/01> patch level 2
-Babel <3.9n> and hyphenation patterns for 69 languages loaded.
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
 
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrartc
-l.cls"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrart
+cl.cls"
 Document Class: scrartcl 2017/04/13 v3.23 KOMA-Script document class (article)
 
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrkbas
-e.sty"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrkba
+se.sty"
 Package: scrkbase 2017/04/13 v3.23 KOMA-Script package (KOMA-Script-dependent b
 asics and keyval usage)
 
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrbase
-.sty"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrbas
+e.sty"
 Package: scrbase 2017/04/13 v3.23 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty
-"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
+y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrlfil
-e.sty"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrlfi
+le.sty"
 Package: scrlfile 2017/04/13 v3.23 KOMA-Script package (loading files)
 
 Package scrlfile, 2017/04/13 v3.23 KOMA-Script package (loading files)
                   Copyright (C) Markus Kohm
 
 )))
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\tocbasi
-c.sty"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\tocbas
+ic.sty"
 Package: tocbasic 2017/04/13 v3.23 KOMA-Script package (handling toc-files)
 \scr@dte@tocline@numberwidth=\skip41
 \scr@dte@tocline@numbox=\box26
@@ -56,13 +56,13 @@ Package scrartcl Info: You've used standard option `11pt'.
 Class scrartcl Info: File `scrsize11pt.clo' used to setup font sizes on input l
 ine 2059.
 
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrsize
-11pt.clo"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrsiz
+e11pt.clo"
 File: scrsize11pt.clo 2017/04/13 v3.23 KOMA-Script font size class option (11pt
 )
 )
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\typeare
-a.sty"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\typear
+ea.sty"
 Package: typearea 2017/04/13 v3.23 KOMA-Script package (type area)
 \ta@bcor=\skip42
 \ta@div=\count79
@@ -109,11 +109,11 @@ LaTeX Info: Redefining \textsubscript on input line 4094.
 Class scrartcl Info: Redefining `\numberline' on input line 5233.
 \bibindent=\dimen102
 )
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\generic\german\german.sty
-" v2.5e 1998-07-08
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\generic\german\german.st
+y" v2.5e 1998-07-08
 Package: german 1998/07/08 v2.5e Support for writing german texts (br)
 \grmnU@D=\dimen103
-german -- \language number for Austrian undefined, default 23 used.
+german -- \language number for Austrian undefined, default 24 used.
 ) (Konventionen.aux)
 \openout1 = `Konventionen.aux'.
 
@@ -131,7 +131,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 7.
 
-("C:\Users\Alex\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Users\Admin\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
@@ -145,21 +145,21 @@ Missing character: There is no ¤ in font cmssbx10!
 
 [1
 
-{C:/Users/Alex/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+{C:/Users/Admin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
 (Konventionen.aux) ) 
 Here is how much of TeX's memory you used:
- 2229 strings out of 493634
- 41396 string characters out of 3135648
- 187841 words of memory out of 3000000
- 5669 multiletter control sequences out of 15000+200000
+ 2229 strings out of 493323
+ 41419 string characters out of 3130015
+ 188749 words of memory out of 3000000
+ 5823 multiletter control sequences out of 15000+200000
  5692 words of font info for 21 fonts, out of 3000000 for 9000
- 1025 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  41i,6n,51p,8844b,190s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Alex/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Alex/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Alex/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Alex/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<C:/Users/Admin/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Admin/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Admin/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 Output written on Konventionen.pdf (2 pages, 59207 bytes).
 PDF statistics:
  25 PDF objects out of 1000 (max. 8388607)
