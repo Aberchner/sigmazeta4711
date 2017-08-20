@@ -7,20 +7,22 @@
 		\subsection{Verallgemeinertes Martingale}
 			In diesem Abschnitt soll Martingale auf (Aktien-)Kurse angewendet und verallgemeinert werden. Dafuer seien im Folgendem \(p_{1}, p_{2}, \cdots,p_{n}\) die Wahrscheinlichkeiten fuer das steigen eines Kurses. Des weiteren seien \(x_{1}, x_{2}, \cdots,x_{n}\) die jeweiligen Einsaetze und X der zugehoerige Vektor, \(\gamma\) der Gewinnfaktor (d.h. der Gewinn bei einem Sieg auf der i-ten Stufen beträgt \(\gamma x_{i}\)) und \(\alpha_{1}, \alpha_{2}, \cdots,\alpha_{n}\) die Steigerungsfaktoren (d.h. \(\alpha_{i}x_{i}=x_{i+1}\)).\\\\
 			D.h. der Gewinn auf der i-ten Stufe entspricht entweder \(-x_{i}\) oder \(\gamma x_{i}\). Sei also \(\psi(p_{i})\) dieser Gewinn. Dann gilt fuer den Erwartungswert
-			\[E(X)=\sum_{i=1}^n \psi(p_{i})p_{i}\]
+			$$
+				E(X)=\sum_{i=1}^n \psi(p_{i})p_{i}
+			$$
 			Und fuer jeden Einsatz gilt
-			\begin{center}
-				\[x_{k}=\alpha_{k-1}x_{k-1}=\alpha_{k-1}\alpha_{k-2}x_{k-2}=\cdots=\prod_{i=1}^{k-1}\alpha_{i}x_{1}\]
-			\end{center}
+			$$
+				x_{k}=\alpha_{k-1}x_{k-1}=\alpha_{k-1}\alpha_{k-2}x_{k-2}=\cdots=\prod_{i=1}^{k-1}\alpha_{i}x_{1}
+			$$
 			Sei \(\rho\) der maximale zur Verfuegung stehende Betrag, d.h
-			\begin{center}
-				\[\rho \geq \sum_{i=1}^{n}x_{i}=\sum_{i=1}^{n}\prod_{k=1}^{i-1}\alpha_{k}x_{1}\]
-			\end{center}
+			$$
+				\rho \geq \sum_{i=1}^{n}x_{i}=\sum_{i=1}^{n}\prod_{k=1}^{i-1}\alpha_{k}x_{1}
+			$$
 			Das Ziel ist jetzt also den Erwartungswert nach den Einsaetzen zu optimieren und nach Strategien in Abhaengigkeit von den Gewinnwahrscheinlichkeiten zu finden.\\
 			Berechne zunaechst also den Gradienten von E
-			\begin{center}
-				\[(\nabla E)_{i}=\sum_{k=1}^{n}\frac{d\psi(p_{k})p_{k}}{dx_{i}}=\frac{d\psi(p_{i})p_{i}}{dx_{i}}\]
-			\end{center}
+			$$
+				(\nabla E)_{i}=\sum_{k=1}^{n}\frac{d\psi(p_{k})p_{k}}{dx_{i}}=\frac{d\psi(p_{i})p_{i}}{dx_{i}}
+			$$
 			Falls \(\psi(p_{i})=-x_{i}\) gilt
 			\begin{center}
 				\[(\nabla E)_{i}=\frac{d\psi(p_{i})p_{i}}{dx_{i}}=-\frac{dx_{i}p_{i}}{dx_{i}}=-p_{i}\]
@@ -66,6 +68,24 @@
 			\[\lambda = \pm\frac{\sqrt{\sum_{i=1}^{n}\xi(i)^2p_{i}^2}}{2\omega}\]
 			Eingesetzt in die anderen n Gleichungen folgt
 			\[x_{i}=\mp\frac{\omega\xi(i)p_{i}}{\sqrt{\sum_{k=1}^{n}\xi(k)^2p_{k}^2}}\]
-
-			
+			Sei nun o.B.d.A \(p_{i}\geq0,5\), d.h es wird immer auf den besseren Ausgang gesetzt. Dann müssen alle \(x_{i}\) positiv sein. Daher ist
+			$$
+			x_{i}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{k}^2}}
+			$$
+			oder
+			$$
+			x_{i}=\frac{\omega p_{i}}{\sqrt{\sum_{k=1}^{n}p_{k}^2}}
+			$$
+			Berechne nun also die Hesse-Matrix:
+			$$
+			\left(
+			\begin{array}{ccccc}
+				2\lambda & 0 & \cdots & 0 & 2x_{1} \\
+				0 & 2\lambda & \ddots & \vdots & 2x_{2} \\
+				\vdots & \ddots & \ddots & 0 & \vdots \\
+				0 & \cdots & 0 & 2\lambda & 2x_{n} \\
+				2x_{1} & 2x_{2} & \cdots & 2x_{n} & 0
+			\end{array}
+			\right)
+			$$
 \end{document}
