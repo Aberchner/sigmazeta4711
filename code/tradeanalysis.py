@@ -52,6 +52,14 @@ def end_minus_start(start, end):
         differences.append(end[i] - start[i])
     return differences
 
+# Calculates the absolute numerical difference between the start and the end 
+# value of a trade.
+def abs_end_minus_start(start, end):
+    differences = []
+    for i in range(len(start)):
+        differences.append(abs(end[i] - start[i]))
+    return differences
+
 
 # Counts the number of rising, falling and equal price trades.
 def rise_tie_fall_counter(start, end):
@@ -66,25 +74,69 @@ def rise_tie_fall_counter(start, end):
     return r, t, f
 
 
+# Adds every difference between start and end to an array hist.
 def histogram(start, end):
     diff = end_minus_start(start, end)
-    hist = []
+    values = []
     for i in range(len(diff)):
-        if 
+        inside = False
+        for j in range(len(values)):
+            if round(diff[i], 1) == values[j]:
+                inside = True
+            else:
+                continue
+        if inside == False:
+            values.append(round(diff[i], 1))
+    values = sorted(values)
+    density = [0]*len(values)
+    for i in range(len(diff)):
+        for j in range(len(values)):
+            if round(diff[i], 2) == values[j]:
+                density[j] = density[j] + 1
+            else:
+                continue
+    sumdensity = 0
+    for i in range(len(density)):
+        sumdensity = sumdensity + density[i]
+    for i in range(len(density)):
+        density[i] = density[i]/sumdensity
+    return values, density
+
+
+def normal_distribution(average, deviation, a, b):
+    a, d = average, deviation
+    X = np.linspace(-a, b, 1000)
+    Y = []
+    for i in range(len(X)):
+        Y.append((1/(d*(2*math.pi)**0.5))*math.exp(-0.5*((X[i]-a)/d)**2))
+    return X, Y
             
 
-data = read_and_format(src)
+data = read_and_format(src, 1000)
 start, end = [], []
 for i in range(len(data)):
     start.append(data[i][2])
     end.append(data[i][3])
-d = end_minus_start(start, end)
-a = average(d)
-s = standard_deviation(d)
+diff = end_minus_start(start, end)
+diffabs = abs_end_minus_start(start, end)
+a = average(diff)
+aabs = average(diffabs)
+d = standard_deviation(diff)
+dabs = standard_deviation(diffabs)
+values, density = histogram(start, end)
+X, Y = normal_distribution(a, d, abs(min(values)), max(values))
 
 print(rise_tie_fall_counter(start, end))
-print(a)
-print(s)
+print("average:", a)
+print("average absolute:", aabs)
+print("standard deviation:", d)
+print("standard deviation absolute:", dabs)
+print(values)
+print(density)
+
+plt.scatter(values, density)
+plt.plot(X, Y)
+
 
 
 
