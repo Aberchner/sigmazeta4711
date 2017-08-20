@@ -7,16 +7,14 @@
 		\subsection{Verallgemeinertes Martingale}
 			In diesem Abschnitt soll Martingale auf (Aktien-)Kurse angewendet und verallgemeinert werden. Dafuer seien im Folgendem \(p_{1}, p_{2}, \cdots,p_{n}\) die Wahrscheinlichkeiten fuer das steigen eines Kurses. Des weiteren seien \(x_{1}, x_{2}, \cdots,x_{n}\) die jeweiligen Einsaetze und X der zugehoerige Vektor, \(\gamma\) der Gewinnfaktor (d.h. der Gewinn bei einem Sieg auf der i-ten Stufen beträgt \(\gamma x_{i}\)) und \(\alpha_{1}, \alpha_{2}, \cdots,\alpha_{n}\) die Steigerungsfaktoren (d.h. \(\alpha_{i}x_{i}=x_{i+1}\)).\\\\
 			D.h. der Gewinn auf der i-ten Stufe entspricht entweder \(-x_{i}\) oder \(\gamma x_{i}\). Sei also \(\psi(p_{i})\) dieser Gewinn. Dann gilt fuer den Erwartungswert
-			\begin{center}
-				\[E(X)=\sum_{i=1}^n \psi(p_{i})p_{i}\]
-			\end{center}
+			\[E(X)=\sum_{i=1}^n \psi(p_{i})p_{i}\]
 			Und fuer jeden Einsatz gilt
 			\begin{center}
 				\[x_{k}=\alpha_{k-1}x_{k-1}=\alpha_{k-1}\alpha_{k-2}x_{k-2}=\cdots=\prod_{i=1}^{k-1}\alpha_{i}x_{1}\]
 			\end{center}
-			Sei \(\omega\) der maximale zur Verfuegung stehende Betrag, d.h
+			Sei \(\rho\) der maximale zur Verfuegung stehende Betrag, d.h
 			\begin{center}
-				\[\omega \geq \sum_{i=1}^{n}x_{i}=\sum_{i=1}^{n}\prod_{k=1}^{i-1}\alpha_{k}x_{1}\]
+				\[\rho \geq \sum_{i=1}^{n}x_{i}=\sum_{i=1}^{n}\prod_{k=1}^{i-1}\alpha_{k}x_{1}\]
 			\end{center}
 			Das Ziel ist jetzt also den Erwartungswert nach den Einsaetzen zu optimieren und nach Strategien in Abhaengigkeit von den Gewinnwahrscheinlichkeiten zu finden.\\
 			Berechne zunaechst also den Gradienten von E
@@ -44,7 +42,8 @@
 			\begin{center}
 				\[(\nabla E)_{i}=\xi(i)p_{i}\]
 			\end{center}
-			Setze nun die Nebenbedingung als die Norm von X\[g(X):=\sum_{i=1}^{n}x_{i}^2-{\omega}^2\]
+			Sei nun \(\omega\) die Norm von X, dann gilt fuer die Nebenbedingung
+			\[g(X):=\sum_{i=1}^{n}x_{i}^2-{\omega}^2\]
 			Dann gilt fuer \[(\nabla \lambda g)_{i} = 2\lambda x_{i}\]\\
 			Es laesst sich also mit der Methode der Lagrange-Multiplikatoren die folgende Funktion aufstellen \[\Lambda(X,\lambda) := E(X)+\lambda g(X)\]
 			\[\nabla \Lambda(X,\lambda) = \nabla E(X) + \nabla \lambda g(X)\]
@@ -64,9 +63,9 @@
 			\[\sum_{i=1}^{n}(-\frac{\xi(i)p_{i}}{2\lambda})^2-\omega^2=0\]
 			\[\sum_{i=1}^{n}\frac{\xi(i)^2p_{i}^2}{4\lambda^2}=\omega^2\]
 			\[\sum_{i=1}^{n}\xi(i)^2p_{i}^2=4\omega^2\lambda^2\]
-			\[\lambda = \sum_{i=1}^{n}\frac{\xi(i)^2p_{i}^2}{4\omega^2}\]
+			\[\lambda = \pm\frac{\sqrt{\sum_{i=1}^{n}\xi(i)^2p_{i}^2}}{2\omega}\]
 			Eingesetzt in die anderen n Gleichungen folgt
-			\[x_{i}=-\frac{2\omega^2\xi_{i}p_{i}}{\sum_{k=1}^{n}\xi(k)^2p_{k}^2}\]
+			\[x_{i}=\mp\frac{\omega\xi(i)p_{i}}{\sqrt{\sum_{k=1}^{n}\xi(k)^2p_{k}^2}}\]
 
 			
 \end{document}
