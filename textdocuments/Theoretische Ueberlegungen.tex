@@ -1,5 +1,6 @@
 \documentclass[11pt]{scrartcl}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \begin{document}
 	\section{Martingale und Varianten}
 		\subsection{Einführung in Martingale}
@@ -114,4 +115,46 @@
 			=-4x_{1}^2=-2^n\lambda^{n-2}x_{1}^2
 			$$
 			Induktionsschritt:
+			$$
+			|H_{L}(X,\lambda)|=
+			\begin{vmatrix}
+				0 & 2x_{1} & 2x_{2} & \cdots & 2x_{n} \\
+				2x_{1} & 2\lambda & 0 & \cdots & 0 \\
+				2x_{2} & 0 & \ddots & \ddots & \vdots \\
+				\vdots & \vdots & \ddots & \ddots & 0 \\
+				2x_{n} &  0 & \cdots & 0 & 2\lambda
+			\end{vmatrix}
+			=
+			$$
+			$$
+			(-1)^{2(n+1)}2\lambda
+			\begin{vmatrix}
+			0 & 2x_{1} & 2x_{2} & \cdots & 2x_{n-1} \\
+			2x_{1} & 2\lambda & 0 & \cdots & 0 \\
+			2x_{2} & 0 & \ddots & \ddots & \vdots \\
+			\vdots & \vdots & \ddots & \ddots & 0 \\
+			2x_{n-1} &  0 & \cdots & 0 & 2\lambda
+			\end{vmatrix}
+			+(-1)^{n}2x_{n}
+			\begin{vmatrix}
+			2x_{1} & 2\lambda & 0 & \cdots & 0 \\
+			2x_{2} & 0 & \ddots & \ddots & \vdots \\
+			\vdots & \vdots & \ddots & \ddots & 0 \\
+			\vdots & 0 & \cdots & 0 & 2\lambda \\
+			2x_{n} &  0 & \cdots & \cdots & 0
+			\end{vmatrix}
+			$$
+			Fuer die erste Determinante lässt sich nun die Induktionsvoraussetzung einsetzen und die zweite Determinante laesst sich einmal nach der letzten Zeile und dann wiederholt nach der zweiten Spalte entwickeln. Dadurch entsteht einmal der Faktor \(2x_{n}\), \((n-2)\)-mal der Faktor \(2\lambda\) und einmal \((-1)^{n-1}\).
+			$$
+			|H_{L}(X,\lambda)|=(-1)^{2(n+1)}2\lambda(-2^{n-1}\lambda^{n-3}\sum_{i=1}^{n-1}x_{i})+(-1)^{n}2x_{n}2x_{n}(2\lambda)^{n-2}(-1)^{n-1}
+			$$
+			$$
+			=-2^{n}\lambda^{n-2}\sum_{i=1}^{n-1}x_{i}+(-1)^{2n-1}2^{n}\lambda^{n-2}x_{i}^{2}
+			=-2^n\lambda^{n-2}\sum_{i=1}^{n}x_{i}^2
+			$$
+			$\hfill\square$\\\\
+			Daraus folgt, dass die Punkte genau dann ein lokales Maximum sind, wenn \(\lambda>0\). Für gerade n sind die Punkte unabhängig von \(\lambda\) immer ein lokales Maximum. Wie bereits gezeigt gilt, falls \(\lambda>0\)
+			$$
+			x_{i}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{k}^2}}
+			$$
 \end{document}
