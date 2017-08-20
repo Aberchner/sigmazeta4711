@@ -76,23 +76,24 @@
 			$$
 			x_{i}=\frac{\omega p_{i}}{\sqrt{\sum_{k=1}^{n}p_{k}^2}}
 			$$
-			Unter der Annahme das fuer alle i,j gilt das \(p_{i}=p_{j}\) gilt sogar
+			Unter der Annahme das fuer alle i,j gilt, dass \(p_{i}=p_{j}\) gilt sogar
 			$$
 			x_{i}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{k}^2}}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}\gamma^2p_{i}^2}}=\frac{\gamma\omega p_{i}}{\sqrt{\sum_{k=1}^{n}1}\gamma p_{i}}=\frac{\sqrt{2}\omega}{\sqrt{n(n+1)}}
 			$$
 			und
 			$$
 			x_{i}=\frac{\omega p_{i}}{\sqrt{\sum_{k=1}^{n}p_{k}^2}}=\frac{\omega p_{i}}{\sqrt{\sum_{k=1}^{n}p_{i}^2}}=\frac{\omega }{\sqrt{\sum_{k=1}^{n}1}}=\frac{\sqrt{2}\omega}{\sqrt{n(n+1)}}
+			$$\\
+			Berechne nun also die geraenderte Hesse-Matrix:
 			$$
-			Berechne nun also die Hesse-Matrix:
-			$$
+			H_{L}(X,\lambda)=
 			\left(
 			\begin{array}{ccccc}
-				2\lambda & 0 & \cdots & 0 & 2x_{1} \\
-				0 & 2\lambda & \ddots & \vdots & 2x_{2} \\
-				\vdots & \ddots & \ddots & 0 & \vdots \\
-				0 & \cdots & 0 & 2\lambda & 2x_{n} \\
-				2x_{1} & 2x_{2} & \cdots & 2x_{n} & 0
+				0 & 2x_{1} & 2x_{2} & \cdots & 2x_{n} \\
+				2x_{1} & 2\lambda & 0 & \cdots & 0 \\
+				2x_{2} & 0 & \ddots & \ddots & \vdots \\
+				\vdots & \vdots & \ddots & \ddots & 0 \\
+				2x_{n} &  0 & \cdots & 0 & 2\lambda
 			\end{array}
 			\right)
 			$$
