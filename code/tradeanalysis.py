@@ -9,7 +9,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-src = open("goldprize 2007-2017.txt")
+src = open("..\data\goldprize 2007-2017.txt")
 
 
 # The method read_and_format gets the adress from a datafile, casts the
@@ -95,29 +95,13 @@ def rise_tie_fall_counter(start, end):
 # Adds every difference between start and end to an array hist.
 def histogram(start, end):
     diff = end_minus_start(start, end)
-    values = []
-    for i in range(len(diff)):
-        inside = False
-        for j in range(len(values)):
-            if round(diff[i], 1) == values[j]:
-                inside = True
-            else:
-                continue
-        if inside == False:
-            values.append(round(diff[i], 1))
-    values = sorted(values)
+    values = sorted(set(diff),key=diff.index)
+    
+    numberValues = len(diff)
+    
     density = [0]*len(values)
-    for i in range(len(diff)):
-        for j in range(len(values)):
-            if round(diff[i], 2) == values[j]:
-                density[j] = density[j] + 1
-            else:
-                continue
-    sumdensity = 0
-    for i in range(len(density)):
-        sumdensity = sumdensity + density[i]
-    for i in range(len(density)):
-        density[i] = density[i]/sumdensity
+    for i in range(len(values)):
+        density[i] = diff.count(values[i])/numberValues
     return values, density
 
 
