@@ -34,7 +34,6 @@ def average(array):
         average = average + array[i]
     return average/len(array)
 
-
 # Calculates the standard deviation of a given array.
 def standard_deviation(array):
     a = average(array)
@@ -43,6 +42,25 @@ def standard_deviation(array):
         tmp = tmp + (a - array[i])**2
     return tmp / (len(array) * (len(array) - 1))
 
+# Calculates the skewness of a given dataset.
+def skewness(array):
+    a = average(array)
+    d = standard_deviation(array)
+    g = 0
+    for i in range(len(array)):
+        g = g + (array[i] - a)**3
+    g = g/(len(array)*d**3)
+    return g
+
+# Calculates the kurtosis of a given dataset.
+def kurtosis(array):
+    a = average(array)
+    d = standard_deviation(array)
+    w = 0
+    for i in range(len(array)):
+        w = w + (array[i] - a)**4
+    w = (w/(len(array)*d**4)) - 3
+    return w
 
 # Calculates the numerical difference between the start and the end value of
 # a trade.
@@ -103,39 +121,46 @@ def histogram(start, end):
     return values, density
 
 
+# Calculates a normal distribution.
 def normal_distribution(average, deviation, a, b):
-    a, d = average, deviation
+    av, de = average, deviation
+    de = 0.1
     X = np.linspace(-a, b, 1000)
     Y = []
     for i in range(len(X)):
-        Y.append((1/(d*(2*math.pi)**0.5))*math.exp(-0.5*((X[i]-a)/d)**2))
+        Y.append((math.exp(-0.5*((X[i]-av)/de)**2))/(de*(2*math.pi)**0.5))
     return X, Y
             
 
-data = read_and_format(src, 1000)
+data = read_and_format(src, 10)
 start, end = [], []
 for i in range(len(data)):
     start.append(data[i][2])
     end.append(data[i][3])
-diff = end_minus_start(start, end)
-diffabs = abs_end_minus_start(start, end)
-a = average(diff)
-aabs = average(diffabs)
-d = standard_deviation(diff)
-dabs = standard_deviation(diffabs)
+#diff = end_minus_start(start, end)
+#diffabs = abs_end_minus_start(start, end)
+#a = average(diff)
+#aabs = average(diffabs)
+#d = standard_deviation(diff)
+#dabs = standard_deviation(diffabs)
+#g = skewness(diff)
+#w = kurtosis(diff)
 values, density = histogram(start, end)
-X, Y = normal_distribution(a, d, abs(min(values)), max(values))
+#X, Y = normal_distribution(a, d, abs(min(values)), max(values))
 
-print(rise_tie_fall_counter(start, end))
-print("average:", a)
-print("average absolute:", aabs)
-print("standard deviation:", d)
-print("standard deviation absolute:", dabs)
+#print(rise_tie_fall_counter(start, end))
+#print("average:", a)
+#print("average absolute:", aabs)
+#print("standard deviation:", d)
+#print("standard deviation absolute:", dabs)
+#print("skewness:", g)
+#uiX0kCEF4njF0i
+#print("kurtosis:", w)
 print(values)
 print(density)
 
-plt.scatter(values, density)
-plt.plot(X, Y)
+#plt.scatter(values, density)
+#plt.plot(X, Y)
 
 
 
