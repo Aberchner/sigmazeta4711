@@ -34,7 +34,7 @@
 			Durch die bereits berechneten Gradienten folgt
 			\[(\nabla \Lambda (X,\lambda))_{k}=
 				\begin{cases}
-					(\gamma +1)p_{i}-1+2\lambda x_{k}, & 1\leq k\leq n\\
+					(\gamma +1)p_{k}-1+2\lambda x_{k}, & 1\leq k\leq n\\
 					\sum_{i=1}^{n}x_{i}^2-\omega^2, & k = n+1
 				\end{cases}\]
 			und es muss gelten das
@@ -46,10 +46,10 @@
 			Jetzt kann jedes x in die letzte Gleichung eingesetzt werden
 			\[\sum_{i=1}^{n}(-\frac{(\gamma +1)p_{i}-1}{2\lambda})^2-\omega^2=0\]
 			\[\sum_{i=1}^{n}\frac{((\gamma +1)p_{i}-1)^2}{4\lambda^2}=\omega^2\]
-			\[\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2p_{i}^2=4\omega^2\lambda^2\]
-			\[\lambda = \pm\frac{\sqrt{\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2p_{i}^2}}{2\omega}\]
+			\[\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2=4\omega^2\lambda^2\]
+			\[\lambda = \pm\frac{\sqrt{\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2}}{2\omega}\]
 			Eingesetzt in die anderen n Gleichungen folgt
-			\[x_{i}=\mp\frac{2\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2p_{i}^2}}\]\\
+			\[x_{i}=\mp\frac{2\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{j=1}^{n}((\gamma +1)p_{j}-1)^2}}\]\\
 			Berechne nun also die geraenderte Hesse-Matrix:
 			$$
 			H_{L}(X,\lambda)=
@@ -117,8 +117,8 @@
 			=-2^n\lambda^{n-2}\sum_{i=1}^{n}x_{i}^2
 			$$
 			$\hfill\square$\\\\
-			Daraus folgt, dass die Punkte genau dann ein lokales Maximum sind, wenn \(\lambda>0\). Für gerade n sind die Punkte unabhängig von \(\lambda\) immer ein lokales Maximum. Wie bereits gezeigt gilt, falls \(\lambda>0\)
+			Daraus folgt, dass die Punkte genau dann ein lokales Maximum sind, wenn \(\lambda>0\). Fuer gerade n sind die Punkte unabhaengig von \(\lambda\) immer ein lokales Maximum. Wie bereits gezeigt gilt, falls \(\lambda>0\)
 			$$
-			x_{i}=\frac{2\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2p_{i}^2}}
+			x_{i}=\frac{2\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{j=1}^{n}((\gamma +1)p_{j}-1)^2}}
 			$$
 \end{document}
