@@ -1,6 +1,7 @@
 \documentclass[11pt]{scrartcl}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{fancybox} 
 \begin{document}
 	\section{Martingale und Varianten}
 		\subsection{Einführung in Martingale}
@@ -8,50 +9,72 @@
 		\subsection{Verallgemeinertes Martingale}
 			In diesem Abschnitt soll Martingale auf (Aktien-)Kurse angewendet und verallgemeinert werden. Dafuer seien im Folgendem \(p_{1}, p_{2}, \cdots,p_{n}\) die Wahrscheinlichkeiten fuer das steigen eines Kurses. Des weiteren seien \(x_{1}, x_{2}, \cdots,x_{n}\) die jeweiligen Einsaetze und X der zugehoerige Vektor, \(\gamma\) der Gewinnfaktor (d.h. der Gewinn bei einem Sieg auf der i-ten Stufen beträgt \(\gamma x_{i}\)) und \(\alpha_{1}, \alpha_{2}, \cdots,\alpha_{n}\) die Steigerungsfaktoren (d.h. \(\alpha_{i}x_{i}=x_{i+1}\)).\\\\
 			D.h. der Gewinn auf der i-ten Stufe entspricht entweder \(-x_{i}\) oder \(\gamma x_{i}\). Dann gilt fuer den Erwartungswert
-			$$
+			\begin{equation}
 				E(X)=\sum_{i=1}^n \gamma x_{i}p_{i}-x_{i}(1-p_{i})
 				=\sum_{i=1}^n (\gamma+1) x_{i}p_{i}-x_{i}
 				=\sum_{i=1}^n ((\gamma +1)p_{i}-1)x_{i}
-			$$
+			\end{equation}
 			Und fuer jeden Einsatz gilt
-			$$
+			\begin{equation}
 				x_{k}=\alpha_{k-1}x_{k-1}=\alpha_{k-1}\alpha_{k-2}x_{k-2}=\cdots=\prod_{i=1}^{k-1}\alpha_{i}x_{1}
-			$$
+			\end{equation}
 			Sei \(\rho\) der maximale zur Verfuegung stehende Betrag, d.h
-			$$
+			\begin{equation}
 				\rho \geq \sum_{i=1}^{n}x_{i}=\sum_{i=1}^{n}\prod_{k=1}^{i-1}\alpha_{k}x_{1}
-			$$
+			\end{equation}
 			Das Ziel ist jetzt also den Erwartungswert nach den Einsaetzen zu optimieren und nach Strategien in Abhaengigkeit von den Gewinnwahrscheinlichkeiten zu finden.\\
 			Berechne zunaechst also den Gradienten von E
-			$$
+			\begin{equation}
 				(\nabla E)_{i}=\sum_{k=1}^{n}\frac{d((\gamma +1)p_{i}-1)x_{i}}{dx_{i}}=(\gamma +1)p_{i}-1
-			$$
+			\end{equation}
 			Sei nun \(\omega\) die Norm von X, dann gilt fuer die Nebenbedingung
-			\[g(X):=\sum_{i=1}^{n}x_{i}^2-{\omega}^2\]
-			Dann gilt fuer \[(\nabla \lambda g)_{i} = 2\lambda x_{i}\]\\
-			Es laesst sich also mit der Methode der Lagrange-Multiplikatoren die folgende Funktion aufstellen \[\Lambda(X,\lambda) := E(X)+\lambda g(X)\]
-			\[\nabla \Lambda(X,\lambda) = \nabla E(X) + \nabla \lambda g(X)\]
-			Durch die bereits berechneten Gradienten folgt
-			\[(\nabla \Lambda (X,\lambda))_{k}=
+			\begin{equation}
+			g(X):=\sum_{i=1}^{n}x_{i}^2-{\omega}^2
+			\end{equation}
+			Dann gilt fuer 
+			\begin{equation}
+			(\nabla \lambda g)_{i} = 2\lambda x_{i}
+			\end{equation}\\
+			Es laesst sich also mit der Methode der Lagrange-Multiplikatoren die folgende Funktion aufstellen
+			\begin{equation}
+			\Lambda(X,\lambda) := E(X)+\lambda g(X)
+			\end{equation}
+			\begin{equation}
+			\nabla \Lambda(X,\lambda) = \nabla E(X) + \nabla \lambda g(X)
+			\end{equation}
+			Durch die bereits berechneten Gradienten in (4),(6) folgt
+			\begin{equation}
+			(\nabla \Lambda (X,\lambda))_{k}=
 				\begin{cases}
 					(\gamma +1)p_{k}-1+2\lambda x_{k}, & 1\leq k\leq n\\
 					\sum_{i=1}^{n}x_{i}^2-\omega^2, & k = n+1
-				\end{cases}\]
+				\end{cases}
+			\end{equation}
 			und es muss gelten das
-			\[\nabla \Lambda(X,\lambda)=0\]
+			\begin{equation}
+			\nabla \Lambda(X,\lambda)=0
+			\end{equation}
 			Daher folgt
-			\[\lambda x_{i} = -\frac{(\gamma +1)p_{i}-1}{2}\]
+			\begin{equation}
+			\lambda x_{i} = -\frac{(\gamma +1)p_{i}-1}{2}
+			\end{equation}
 			Durch die Methode der Lagrange-Multiplikatoren koennen wir annehmen das \(\lambda \neq 0\)
-			\[x_{i}= -\frac{(\gamma +1)p_{i}-1}{2\lambda}\]
+			\begin{equation}
+			x_{i}= -\frac{(\gamma +1)p_{i}-1}{2\lambda}
+			\end{equation}
 			Jetzt kann jedes x in die letzte Gleichung eingesetzt werden
-			\[\sum_{i=1}^{n}(-\frac{(\gamma +1)p_{i}-1}{2\lambda})^2-\omega^2=0\]
-			\[\sum_{i=1}^{n}\frac{((\gamma +1)p_{i}-1)^2}{4\lambda^2}=\omega^2\]
-			\[\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2=4\omega^2\lambda^2\]
-			\[\lambda = \pm\frac{\sqrt{\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2}}{2\omega}\]
-			Eingesetzt in die anderen n Gleichungen folgt
-			\[x_{i}=\mp\frac{2\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{j=1}^{n}((\gamma +1)p_{j}-1)^2}}\]\\
+			\begin{eqnarray}
+			0&=&\sum_{i=1}^{n}(-\frac{(\gamma +1)p_{i}-1}{2\lambda})^2-\omega^2\\
+			\omega^2&=&\sum_{i=1}^{n}\frac{((\gamma +1)p_{i}-1)^2}{4\lambda^2}\\
+			4\omega^2\lambda^2&=&\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2\\
+			\lambda &=& \pm\frac{\sqrt{\sum_{i=1}^{n}((\gamma +1)p_{i}-1)^2}}{2\omega}
+			\end{eqnarray}
+			Eingesetzt in (12) folgt
+			\begin{equation}
+			x_{i}=\mp\frac{\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{j=1}^{n}((\gamma +1)p_{j}-1)^2}}
+			\end{equation}\\
 			Berechne nun also die geraenderte Hesse-Matrix:
-			$$
+			\begin{equation}
 			H_{L}(X,\lambda)=
 			\left(
 			\begin{array}{ccccc}
@@ -62,24 +85,24 @@
 				2x_{n} &  0 & \cdots & 0 & 2\lambda
 			\end{array}
 			\right)
-			$$
+			\end{equation}
 			Um zu zeigen das die berechneten Werte Maxima sind, ist zu zeigen,\\ dass \(det(H_{L}(X,\lambda))<0\).\\
 			Zeige also zunächst mit vollstaendiger Induktion nach n, dass
-			$$
+			\begin{equation}
 			det(H_{L}(X,\lambda))=-2^n\lambda^{n-2}\sum_{i=1}^{n}x_{i}^2
-			$$
+			\end{equation}
 			fuer alle \(n\geq2\) gilt.\\
 			\(n=2\):
-			$$
+			\begin{equation}
 			|H_{L}(X,\lambda)|=
 			\begin{vmatrix}
 				0 & 2x_{1} \\
 				2x_{1} & 2\lambda\\
 			\end{vmatrix}
 			=-4x_{1}^2=-2^n\lambda^{n-2}x_{1}^2
-			$$
+			\end{equation}
 			Induktionsschritt:
-			$$
+			\begin{equation}
 			|H_{L}(X,\lambda)|=
 			\begin{vmatrix}
 				0 & 2x_{1} & 2x_{2} & \cdots & 2x_{n} \\
@@ -89,8 +112,8 @@
 				2x_{n} &  0 & \cdots & 0 & 2\lambda
 			\end{vmatrix}
 			=
-			$$
-			$$
+			\end{equation}
+			\begin{equation}
 			(-1)^{2n}2\lambda
 			\begin{vmatrix}
 			0 & 2x_{1} & 2x_{2} & \cdots & 2x_{n-1} \\
@@ -107,18 +130,18 @@
 			\vdots & 0 & \cdots & 0 & 2\lambda \\
 			2x_{n} &  0 & \cdots & \cdots & 0
 			\end{vmatrix}
-			$$
+			\end{equation}
 			Fuer die erste Determinante lässt sich nun die Induktionsvoraussetzung einsetzen und die zweite Determinante laesst sich einmal nach der letzten Zeile und dann wiederholt nach der zweiten Spalte entwickeln. Dadurch entsteht einmal der Faktor \(2x_{n}\), \((n-2)\)-mal der Faktor \(2\lambda\) und einmal \((-1)^{n-1}\).
-			$$
+			\begin{equation}
 			|H_{L}(X,\lambda)|=(-1)^{2n}2\lambda(-2^{n-1}\lambda^{n-3}\sum_{i=1}^{n-1}x_{i})+(-1)^{n}2x_{n}2x_{n}(2\lambda)^{n-2}(-1)^{n-1}
-			$$
-			$$
+			\end{equation}
+			\begin{equation}
 			=-2^{n}\lambda^{n-2}\sum_{i=1}^{n-1}x_{i}+(-1)^{2n-1}2^{n}\lambda^{n-2}x_{n}^{2}
 			=-2^n\lambda^{n-2}\sum_{i=1}^{n}x_{i}^2
-			$$
+			\end{equation}
 			$\hfill\square$\\\\
 			Daraus folgt, dass die Punkte genau dann ein lokales Maximum sind, wenn \(\lambda>0\). Fuer gerade n sind die Punkte unabhaengig von \(\lambda\) immer ein lokales Maximum. Wie bereits gezeigt gilt, falls \(\lambda>0\)
-			$$
-			x_{i}=\frac{2\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{j=1}^{n}((\gamma +1)p_{j}-1)^2}}
-			$$
+			\begin{equation}
+			x_{i}=-\frac{\omega((\gamma +1)p_{i}-1)}{\sqrt{\sum_{j=1}^{n}((\gamma +1)p_{j}-1)^2}}
+			\end{equation}
 \end{document}
