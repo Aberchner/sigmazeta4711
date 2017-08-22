@@ -13,15 +13,15 @@ class TradeData:
     def __init__(self,type, time, startValue, endValue, highestValue,
                  lowestValue, numberTrades):
         if type == "real":
-            self.time = (int) time
-            self.startValue = (int) startValue
-            self.endValue = (int) endValue
-            self.highestValue = (int) highestValue
-            self.lowestValue = (int) lowestValue
-            self.numberTrades = (int) numberTrades
+            self.time = time
+            self.startValue = int(startValue)
+            self.endValue = int(endValue)
+            self.highestValue = int(highestValue)
+            self.lowestValue = int(lowestValue)
+            self.numberTrades = int(numberTrades)
         if type == "sim":
-            self.startValue = (int) startValue
-            self.endValue = (int) endValue
+            self.startValue = int(startValue)
+            self.endValue = int(endValue)
             
 def read_comex_GC(path):
     file = open(path)
