@@ -11,24 +11,9 @@ import numpy as np
 import scipy as sp
 import scipy.stats
 import operator as op
-from dataformatting import read_comex_GC 
+import dataformatting as df
 
-src = "..\..\data\comex.GC goldprize 2007-2017\comex.GC_070101_080101.csv"
-
-
-# The method read_and_format gets the adress from a datafile, casts the
-# entries to ints/floats and groups them into an array, which is returned.
-def read_and_format(sourcefile, N=np.Inf):
-    array = []
-    i = 0
-    for line in sourcefile:
-        tmp = line[1:-2].split(", ")
-        array.append((int(tmp[0]), int(tmp[1]), float(tmp[2]), float(tmp[3]), 
-                      float(tmp[4]), float(tmp[5])))
-        i = i + 1
-        if i == N:
-            break
-    return array
+src = "..\..\data\goldprize 2007-2017.txt"
 
 
 # Counts the number of rising, falling and equal price trades.
@@ -67,9 +52,9 @@ def normal_distribution(average, deviation, a, b):
     for i in range(len(X)):
         Y.append((math.exp(-0.5*((X[i]-av)/de)**2))/(de*(2*math.pi)**0.5))
     return X, Y
-            
 
-data = read_comex_GC(src)
+#data[0].startValue
+data = df.read_trade_data(src, 10)
 start, end = [], []
 for i in range(len(data)):
     start.append(data[i].startValue)
@@ -77,10 +62,9 @@ for i in range(len(data)):
 diff = list(map(op.sub, start, end))
 diffabs = list(map(op.abs, map(op.sub, start, end)))
 
-print(data[0].startValue)
 print(rise_tie_fall_counter(start, end))
 print("average:", np.mean(diff))
-print("average absolute:", np.mean(diffabs))
+print("average absolute of diffabs:", np.mean(diffabs))
 print("standard deviation:", np.std(diff))
 print("standard deviation of diffabs:", np.std(diffabs))
 print("skewness:", sp.stats.skew(diff))
@@ -90,8 +74,8 @@ print(values)
 print(density)
 
 X, Y = normal_distribution(np.mean(diff), np.std(diff), abs(min(values)), max(values))
-plt.scatter(values, density)
-plt.plot(X, Y)
+#plt.scatter(values, density)
+#plt.plot(X, Y)
 
 
 
