@@ -6,74 +6,89 @@ Created on Sat Aug 19 2017
 """
 
 # This programm looks for gaps in the data and analyses how and how frequently they appear
-import datetime
+from datetime import datetime as time
+from datetime import timedelta
 import matplotlib.pyplot as plotter
+import dataformatting
 
-allDatapoints = []
+# beware of Magic numbers
+minYear = 2007
+maxYear = 2017
 
-def convertTimeStamp (date, time):
-    """contains a single price value with the corresponding timestamp
-    the timestamp is converted into a Datetime object"""
-    dateIn = date
-    timeIn = time
-    #create date
-    #datetime(year, month, day
-    dt = datetime.datetime(int(int(dateIn)/10000), int(int(dateIn)/100)%100, int(dateIn)%100,
-                             #hour, minute)
-                            int(int(timeIn)/ 10000), int(int(timeIn)/100)%int(100))
-
-    return dt
-
-class time_price_pair:
-
-    @property
-    def next_pair(self):
-        """returns the next time_price_pair"""
-        return self.time
-
-    @next_pair.setter
-    def next_pair(self, next_pair):
-        """sets the next pair"""
-        self.next_pair=next_pair()
-
-    def __init__(self, date, time, price):
-        self.time = convertTimeStamp(date, time)
-        self.price = price
+existingData = 0
+missingData = 0
+# all variables that base gaps on time use the time from the previous TradeData
+gapsByYear = [0]*(maxYear-minYear)
+gapsByMonth = [0]*12
+gapsByDay = [0]*7
+gapsByTime = [0]*(24*60)
+gapsByPrevVolume = {}
+amountByPrevVolume = {}
+gapsByPostVolume = {}
+amountByPostVolume = {}
+gapLengths = {}
 
 
-def readdata():
-    """reads the datafile and builds a list of time_price_pairs"""
-    file = open("../data/goldprize 2007-2017.txt")
-    first = None
+def check_trade_data(tradeData, prevTradeData):
+    global existingData
+    global missingData
+    global gapsByYear
+    global gapsByMonth
+    global gapsByDay
+    global gapsByTime
+    global gapsByPrevVolume
+    global amountByPrevVolume
+    global gapsByPostVolume
+    global amountByPostVolume
+    global gapLengths
+    existingData += 1
+
+    # calculate gap size
+    gapSize = ((tradeData.time - prevTradeData.time) / timedelta(minutes=1)) - 1
+    # count the number of gaps
+    missingData += gapSize
+    # count gaps by year
+    gapsByYear[(prevTradeData.time.year) - minYear] += gapSize
+    # count gaps by month
+    gapsByMonth[(prevTradeData.time.month)-1] += gapSize
+    # count Gaps by Weekday (Monday to Sunday)
+    gapsByDay[(prevTradeData.time.weekday())] += gapSize
+    # count gaps by hours*60+minutes
+    gapsByTime[(prevTradeData.time.hour*60
+                + prevTradeData.time.minute)] += gapSize
+    # count gaps by the trade volume of the previous trade
+    #TODO
+    # count gaps by the trade volume of the following trade
+    #TODO
+    # count the Amount of gaps of each size
+    #TODO
+
+def print_results():
+    print("Number of TradeData: {0} Number of Gaps: {1} Percentage of missing Trades: {2}"
+          .format(str(existingData), str(missingData), str(missingData / (missingData + existingData))))
+    #TODO
+
+
+def write_results():
+    outputFile = open("../../textdocuments/gapStudyResults.txt", "w")
+    outputFile.write("existing: {0}; missing: {1}; {2}"
+                     .format(str(existingData), str(missingData), str(missingData / (missingData + existingData))))
+    #TODO
+
+def gap_study():
+    #setup
+    allData = dataformatting.read_comex_GC("../../data/comex.GC_070101_080101.csv")
+
+    print("reading finished - read " + str(len(allData)) + " lines")
+
+    # iterate over all TradeData and analyse Gaps
     prev = None
-    for line in file:
-        if(line[:1] == "("):
-            line = line[1:]
-            line = line[:-2]
-        temp = time_price_pair(line.split(", ")[0], line.split(", ")[1], line.split(", ")[3])
+    for currentTradeData in allData:
         if not prev is None:
-            prev.next = temp
-        prev = temp;
-        allDatapoints.append(temp)
-        if first is None:
-            first = temp
-    return first
+            check_trade_data(currentTradeData, prev)
+        prev = currentTradeData
 
-readdata()
-print("reading finished")
-t = []
-d = []
-exist = 0
-missing = 0
-for pair in allDatapoints:
-    try:
-        temp = pair.next
-    except AttributeError:
-        temp = None
-    exist += 1
-    if not temp is None:
-        dif = temp.time-pair.time
-        missing += ((dif)/datetime.timedelta(minutes=1))-1
-        # print(str(missing) + " " + str(((dif)/datetime.timedelta(minutes=1))-1))
-        # print(str(pair.time) + " " + str(temp.time))
-print(str(exist) + "Datapoints with " + str(missing) + " gaps. " + str(missing/(exist+missing)*100) + "% missing")
+    print_results()
+    write_results()
+
+gap_study()
