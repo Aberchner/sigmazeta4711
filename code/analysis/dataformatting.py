@@ -14,28 +14,28 @@ class TradeData:
                  lowestValue, numberTrades):
         if type == "real":
             self.time = time
-            self.startValue = int(startValue)
-            self.endValue = int(endValue)
-            self.highestValue = int(highestValue)
-            self.lowestValue = int(lowestValue)
+            self.startValue = float(startValue)
+            self.endValue = float(endValue)
+            self.highestValue = float(highestValue)
+            self.lowestValue = float(lowestValue)
             self.numberTrades = int(numberTrades)
         if type == "sim":
-            self.startValue = int(startValue)
-            self.endValue = int(endValue)
+            self.startValue = float(startValue)
+            self.endValue = float(endValue)
             
 def read_comex_GC(path):
     file = open(path)
     tradeData = []
-    file.readline
+    file.readline(-1)
     
     for line in file:
         tmp = line.split(",")
-        time = datetime.datetime((int(int(tmp[2])/10000),
+        time = datetime.datetime(int(int(tmp[2])/10000),
                                   int(int(tmp[2])/100)%100,
                                   int(tmp[2])%100,
                                   int(int(tmp[3])/ 10000),
-                                  int(int(tmp[3])/100)%int(100)))
-        tradeData.append(TradeData(time,tmp[4],tmp[7],tmp[5],tmp[6],tmp[8]))
+                                  int(int(tmp[3])/100)%100)
+        tradeData.append(TradeData("real",time,tmp[4],tmp[7],tmp[5],tmp[6],tmp[8]))
     file.close    
     return tradeData
 
@@ -52,3 +52,7 @@ def write_trade_data(path, flag, data):
                    + str(tradeData.lowestValue) + ","
                    + str(tradeData.numberTrades) + "\n")
     
+data = []
+data = read_comex_GC("..\..\data\comex.GC goldprize 2007-2017\comex.GC_070101_080101.csv")
+print("asd")
+write_trade_data("..\..\data\comex.GC goldprize 2007-2017\la.txt","w",data)
