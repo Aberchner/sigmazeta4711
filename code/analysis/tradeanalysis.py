@@ -11,8 +11,9 @@ import numpy as np
 import scipy as sp
 import scipy.stats
 import operator as op
+from dataformatting import read_comex_GC 
 
-src = open("..\data\goldprize 2007-2017.txt")
+src = "..\..\data\comex.GC goldprize 2007-2017\comex.GC_070101_080101.csv"
 
 
 # The method read_and_format gets the adress from a datafile, casts the
@@ -68,14 +69,15 @@ def normal_distribution(average, deviation, a, b):
     return X, Y
             
 
-data = read_and_format(src, 10)
+data = read_comex_GC(src)
 start, end = [], []
 for i in range(len(data)):
-    start.append(data[i][2])
-    end.append(data[i][3])
+    start.append(data[i].startValue)
+    end.append(data[i].endValue)
 diff = list(map(op.sub, start, end))
 diffabs = list(map(op.abs, map(op.sub, start, end)))
 
+print(data[0].startValue)
 print(rise_tie_fall_counter(start, end))
 print("average:", np.mean(diff))
 print("average absolute:", np.mean(diffabs))
