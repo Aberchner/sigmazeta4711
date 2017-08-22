@@ -51,8 +51,3 @@ def write_trade_data(path, flag, data):
                    + str(tradeData.highestValue) + ","
                    + str(tradeData.lowestValue) + ","
                    + str(tradeData.numberTrades) + "\n")
-    
-data = []
-data = read_comex_GC("..\..\data\comex.GC goldprize 2007-2017\comex.GC_070101_080101.csv")
-print("asd")
-write_trade_data("..\..\data\comex.GC goldprize 2007-2017\la.txt","w",data)
