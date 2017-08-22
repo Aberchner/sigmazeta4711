@@ -14,18 +14,6 @@ src = open("goldprize 2007-2017.txt")
 # The method read_and_format gets the adress from a datafile, casts the
 # entries to ints/floats and groups them into an array, which is returned.
 
-def read_and_format(sourcefile, N=np.Inf):
-    array = []
-    i = 0
-    for line in sourcefile:
-        tmp = line[1:-2].split(", ")
-        array.append((int(tmp[0]), int(tmp[1]), float(tmp[2]), float(tmp[3]), 
-                      float(tmp[4]), float(tmp[5])))
-        i = i + 1
-        if i == N:
-            break
-    return array
-
 N = 3077284
 data = read_and_format(src, N)
 
