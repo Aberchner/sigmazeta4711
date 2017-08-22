@@ -8,6 +8,9 @@ Created on Sat Aug 19 21:37:56 2017
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy as sp
+import scipy.stats
+import operator as op
 
 src = open("..\data\goldprize 2007-2017.txt")
 
@@ -27,58 +30,6 @@ def read_and_format(sourcefile, N=np.Inf):
     return array
 
 
-# Calculates the arithmetic average of a given set of data.
-def average(array):
-    average = 0
-    for i in range(0, len(array)):
-        average = average + array[i]
-    return average/len(array)
-
-# Calculates the standard deviation of a given array.
-def standard_deviation(array):
-    a = average(array)
-    tmp = 0
-    for i in range(len(array)):
-        tmp = tmp + (a - array[i])**2
-    return tmp / (len(array) * (len(array) - 1))
-
-# Calculates the skewness of a given dataset.
-def skewness(array):
-    a = average(array)
-    d = standard_deviation(array)
-    g = 0
-    for i in range(len(array)):
-        g = g + (array[i] - a)**3
-    g = g/(len(array)*d**3)
-    return g
-
-# Calculates the kurtosis of a given dataset.
-def kurtosis(array):
-    a = average(array)
-    d = standard_deviation(array)
-    w = 0
-    for i in range(len(array)):
-        w = w + (array[i] - a)**4
-    w = (w/(len(array)*d**4)) - 3
-    return w
-
-# Calculates the numerical difference between the start and the end value of
-# a trade.
-def end_minus_start(start, end):
-    differences = []
-    for i in range(len(start)):
-        differences.append(end[i] - start[i])
-    return differences
-
-# Calculates the absolute numerical difference between the start and the end 
-# value of a trade.
-def abs_end_minus_start(start, end):
-    differences = []
-    for i in range(len(start)):
-        differences.append(abs(end[i] - start[i]))
-    return differences
-
-
 # Counts the number of rising, falling and equal price trades.
 def rise_tie_fall_counter(start, end):
     r, t, f = 0, 0, 0
@@ -94,8 +45,9 @@ def rise_tie_fall_counter(start, end):
 
 # Adds every difference between start and end to an array hist.
 def histogram(start, end):
-    diff = end_minus_start(start, end)
-    values = sorted(set(diff),key=diff.index)
+    diff = list(map(op.sub, start, end))
+
+    values = sorted(set(diff), key = diff.index)
     
     numberValues = len(diff)
     
@@ -121,30 +73,23 @@ start, end = [], []
 for i in range(len(data)):
     start.append(data[i][2])
     end.append(data[i][3])
-#diff = end_minus_start(start, end)
-#diffabs = abs_end_minus_start(start, end)
-#a = average(diff)
-#aabs = average(diffabs)
-#d = standard_deviation(diff)
-#dabs = standard_deviation(diffabs)
-#g = skewness(diff)
-#w = kurtosis(diff)
-values, density = histogram(start, end)
-#X, Y = normal_distribution(a, d, abs(min(values)), max(values))
+diff = list(map(op.sub, start, end))
+diffabs = list(map(op.abs, map(op.sub, start, end)))
 
-#print(rise_tie_fall_counter(start, end))
-#print("average:", a)
-#print("average absolute:", aabs)
-#print("standard deviation:", d)
-#print("standard deviation absolute:", dabs)
-#print("skewness:", g)
-#uiX0kCEF4njF0i
-#print("kurtosis:", w)
+print(rise_tie_fall_counter(start, end))
+print("average:", np.mean(diff))
+print("average absolute:", np.mean(diffabs))
+print("standard deviation:", np.std(diff))
+print("standard deviation of diffabs:", np.std(diffabs))
+print("skewness:", sp.stats.skew(diff))
+print("kurtosis:", sp.stats.kurtosis(diff))
+values, density = histogram(start, end)
 print(values)
 print(density)
 
-#plt.scatter(values, density)
-#plt.plot(X, Y)
+X, Y = normal_distribution(np.mean(diff), np.std(diff), abs(min(values)), max(values))
+plt.scatter(values, density)
+plt.plot(X, Y)
 
 
 
