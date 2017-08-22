@@ -10,7 +10,7 @@ import datetime
 #The TradeData class represents one Trade
 class TradeData:
     
-    def __init__(self,type, time, startValue, endValue, highestValue,
+    def __init__(self, type, time, startValue, endValue, highestValue,
                  lowestValue, numberTrades):
         if type == "real":
             self.time = time
@@ -51,3 +51,8 @@ def write_trade_data(path, flag, data):
                    + str(tradeData.highestValue) + ","
                    + str(tradeData.lowestValue) + ","
                    + str(tradeData.numberTrades) + "\n")
+        
+#data = read_comex_GC("..\..\data\original data\comex.GC_160101_170101.csv")
+#write_trade_data("..\..\data\goldprize 2007-2017.txt", "a", data)
+#print("process complete")
+
