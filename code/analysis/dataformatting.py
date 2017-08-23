@@ -83,7 +83,7 @@ def read_simulation_root(path):
         array.append(float(line))
     file.close()
     return array
-     
+
 #data = read_comex_GC("..\..\data\original data\comex.GC_160101_170101.csv")
 #write_trade_data("..\..\data\goldprize 2007-2017.txt", "a", data)
 #print("process complete")
