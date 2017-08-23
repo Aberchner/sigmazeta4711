@@ -24,34 +24,37 @@ def simulate_by_probability(n, probabilities, start_value):
 
 def martingale(values, probabilities,omega,gamma):
     x = []
-    sum = 0
+    s = 0
     end_value = 0
     for i in range(len(probabilities)):
-        sum = sum + ((gamma+1)*probabilities[i]-1)**2
+        s = s + ((gamma+1)*probabilities[i]-1)**2
     
-    sum = math.sqrt(sum)
+    s = math.sqrt(s)
     for i in range(len(values)):
-        x.append(omega*((gamma+1)-1)/(sum))
+        x.append(-omega*((gamma+1)*probabilities[i]-1)/(s))
     
     for i in range(1,len(x)):
         if values[i]<values[i-1]:
             end_value -= x[i-1]
         else:
-            end_value += x[i-1]*gamma
-        print(end_value)
+            end_value += x[i-1]*(gamma-1)
     return end_value,x
 
 def get_probabilities(n):
     probabilities = []
     for i in range(n):
-        probabilities.append(random())
+       probabilities.append(random())
     return probabilities
 
-n = 100
-probs = get_probabilities(n)
-values = simulate_by_probability(n,probs,0)
-end_value,x= martingale(values,probs,100,2)
-print(end_value)
-print(values)
-print(x)
-print(probs)
+n = 100000
+k = 100
+z = 0
+for i in range(k):
+    probs = get_probabilities(n)
+    values = simulate_by_probability(n,probs,0)
+    end_value,x= martingale(values,probs,1000,2)
+    z += end_value 
+print(z)
+
+#print(x)
+#print(values)
