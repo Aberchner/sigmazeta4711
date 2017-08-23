@@ -9,6 +9,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy
 
+bias = 0.001
 def simulate_by_probability(n, probabilities, start_value):
     values = []
     current_value = start_value
@@ -31,7 +32,7 @@ def martingale(values, probabilities,omega,gamma):
     
     s = math.sqrt(s)
     for i in range(len(values)):
-        x.append(-omega*((gamma+1)*probabilities[i]-1)/(s))
+        x.append(omega*((gamma+1)*probabilities[i]-1)/(s))
     
     for i in range(1,len(x)):
         if values[i]<values[i-1]:
@@ -43,7 +44,7 @@ def martingale(values, probabilities,omega,gamma):
 def get_probabilities(n):
     probabilities = []
     for i in range(n):
-       probabilities.append(random())
+       probabilities.append(random()+bias)
     return probabilities
 
 n = 100000
