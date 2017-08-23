@@ -104,6 +104,7 @@ def write_results():
 
     output_file.write("Amount of existing Trade data vs. Amount of gaps")
     output_file.write("existing: {0}; gaps: {1}; {2} % missing"
+       
                       .format(str(existingData), str(missingData), str(missingData / (missingData + existingData)*100)))
     # TODO
 

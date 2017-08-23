@@ -1,0 +1,1 @@
+Amount of existing Trade data vs. Amount of gapsexisting: 3077283; gaps: 1827212; 37.25586426329316 % missing

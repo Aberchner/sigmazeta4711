@@ -12,7 +12,7 @@ import numpy as np
 class TradeData:
     
     def __init__(self, type, time, startValue, endValue, highestValue,
-                 lowestValue, numberTrades):
+                 lowestValue, numberTrades, rise_probability=0):
         if type == "real":
             self.time = time
             self.startValue = float(startValue)
@@ -23,6 +23,7 @@ class TradeData:
         if type == "sim":
             self.startValue = float(startValue)
             self.endValue = float(endValue)
+            self.rise_probability = float(rise_probability)
             
 def read_comex_GC(path):
     file = open(path)
