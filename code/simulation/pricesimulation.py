@@ -49,7 +49,7 @@ for i in range(len(density)):
         priceroot.append(values[i])
 
 #The creation of the price
-N = 10000
+N = 10
 start_price = 1000
 start_values = [start_price]
 end_values = []
